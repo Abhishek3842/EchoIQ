@@ -18,6 +18,7 @@ export const add = mutation({
     if(!orgId){
         throw new Error("No Organization Found")
     }
+    
     const users = ctx.db.insert("users", {
       name: "PQR",
     });
