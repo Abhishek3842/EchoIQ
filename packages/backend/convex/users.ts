@@ -14,6 +14,10 @@ export const add = mutation({
     if (identity === null) {
       throw new Error("Not authenticated");
     }
+    const orgId=identity.orgId as string;
+    if(!orgId){
+        throw new Error("No Organization Found")
+    }
     const users = ctx.db.insert("users", {
       name: "PQR",
     });
