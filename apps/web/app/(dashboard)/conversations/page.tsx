@@ -1,7 +1,7 @@
 const Page = () => {
     return (  
         <div>
-            <p>Only auth can see me</p>
+            <p>Conversations Page</p>
         </div>
     );
 }
