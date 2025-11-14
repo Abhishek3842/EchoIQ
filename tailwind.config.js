@@ -6,7 +6,15 @@ module.exports = {
     "./packages/ui/src/**/*.{ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: "hsl(var(--primary))",
+        "primary-foreground": "hsl(var(--primary-foreground))",
+        // add the other variables from your theme
+      }
+    }
   },
   safelist: [
     { pattern: /w-\(\-\-sidebar-width\)/ },
