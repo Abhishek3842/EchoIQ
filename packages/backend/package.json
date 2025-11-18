@@ -1,7 +1,7 @@
 {
   "name": "@workspace/backend",
   "type": "module",
-   "scripts": {
+  "scripts": {
     "dev": "convex dev",
     "setup": "convex dev --until-success"
   },
@@ -13,7 +13,7 @@
     "typescript": "latest"
   },
   "dependencies": {
+    "@clerk/backend": "^2.23.0",
     "convex": "^1.25.4"
-  
   }
 }
