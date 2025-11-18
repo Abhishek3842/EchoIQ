@@ -15,12 +15,15 @@ import { useMutation } from "convex/react";
 import {api} from "@workspace/backend/_generated/api"
 import {Doc} from "@workspace/backend/_generated/dataModel"
 import { userAgent } from "next/server";
+import { useAtomValue, useSetAtom } from "jotai";
+import { contactSessionIdAtomFamily, organizationIdAtom } from "../../atoms/widget-atom";
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("invliad email address"),
 });
 export const WidgetAuthScreen = () => {
-    const organizationId="123";
+    const organizationId=useAtomValue(organizationIdAtom);
+    const setContactSessionId=useSetAtom(contactSessionIdAtomFamily(organizationId || ""))
     const SESSION_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours in ms
     const expiresAt = Date.now() + SESSION_DURATION_MS;
     const form =useForm<z.infer<typeof formSchema>>({
@@ -59,7 +62,7 @@ export const WidgetAuthScreen = () => {
             metadata,
             expiresAt,
         })
-        console.log({contactSessionId})
+        setContactSessionId(contactSessionId)
     }
     return (
         <>
